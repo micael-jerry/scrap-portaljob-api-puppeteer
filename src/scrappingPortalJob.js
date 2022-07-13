@@ -1,7 +1,6 @@
 const puppeter = require('puppeteer');
 
-async function scrappingPortalJob() {
-  const url = 'https://www.portaljob-madagascar.com/emploi/liste';
+async function scrappingPortalJob(url) {
   const browser = await puppeter.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle2' });
@@ -24,11 +23,5 @@ async function scrappingPortalJob() {
   await browser.close();
   return data;
 }
-scrappingPortalJob()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+
 module.exports = scrappingPortalJob;
