@@ -13,6 +13,7 @@ async function scrappingPortalJob(url) {
       let contenu_annonce = await document.querySelector('div.max').children[i].querySelector('aside.contenu_annonce');
       let item = await {
         title: await contenu_annonce.children[0].innerText,
+        enterprise: await contenu_annonce.children[1].innerText,
         contract: await contenu_annonce.children[2].innerText,
         description: await contenu_annonce.querySelector('a.description').innerText
       };

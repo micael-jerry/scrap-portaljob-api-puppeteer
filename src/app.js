@@ -17,10 +17,10 @@ app.use(express.json());
 
 app.get('/api-portaljob', async (req, res) => {
   let url = 'https://www.portaljob-madagascar.com/emploi/liste';
-  if (!isNaN(parseInt(req.query.page, 10))) {
+  if (parseInt(req.query.page, 10) > 1) {
     url += `/page/${req.query.page}`;
   }
-  let data = await scrappingPortalJob(url);
+  const data = await scrappingPortalJob(url);
   await res.json(data);
 });
 
